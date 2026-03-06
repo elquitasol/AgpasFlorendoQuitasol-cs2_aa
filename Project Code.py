@@ -8,7 +8,7 @@ try:
     def addTask():
         name = input("Please enter the name for your task: ")
         category = input("Enter a category for the task (ex. FA, AA, SA): ")
-        deadline = input("Enter the deadline in this format: MM/DD/YYYY. ")
+        deadline = input("Enter the deadline in this format, MM/DD/YYYY: ")
         notes = input("Enter the notes for the task: ")
         with open('task.csv', 'a', newline='') as file:
             writer = csv.writer(file)
