@@ -5,11 +5,6 @@ try:
     with open('task.csv', 'r') as file:
         reader = csv.reader(file)
 
-    with open('task.csv', 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(['Task Name', 'Category', 'Deadline', 'Notes', 'Overdue?', 'Finished?'])
-
-
     def addTask():
         name = input("Please enter the name for your task: ")
         category = input("Enter a category for the task (ex. FA, AA, SA): ")
