@@ -32,12 +32,30 @@ try:
             writer = csv.writer(file)
             writer.writerow([name, category, deadline, notes, task_overdue, status ])
         print("Done!")
+        sleep(2)
 
     def editTask():
-        TaskChoice = input(str("Please enter the name of the task you want to edit: "))
-        for name in filename:
-            if name["Task Name"] == TaskChoice:
-                name["Finished?"] = True
+        op = open("task.csv", "r")
+        dt = csv.DictReader(op)
+        print(dt)
+        up_dt = []
+        for r in dt:
+            print(r)
+            row = {'Name': r['Name'],
+                   'Category': r['Category'],
+                   'Deadline': r['Deadline'],
+                   'Notes': r['Notes'],
+                   'Overdue?': r['Overdue?'],
+                   'Finished?': r['Finished?']}
+            up_dt.append(row)
+        print(up_dt)
+        op.close()
+        op = open("task.csv", "w", newline='')
+        headers = ['Name', 'Category', 'Deadline', 'Notes']
+        data = csv.DictWriter(op, delimiter=',', fieldnames=headers)
+        data.writerow(dict((heads, heads) for heads in headers))
+        data.writerows(up_dt)
+
 
     def deleteTask():
         TaskChoice = input("Please enter the name of the task you want to delete: ")
